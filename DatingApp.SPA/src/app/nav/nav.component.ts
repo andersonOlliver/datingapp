@@ -5,14 +5,23 @@ import { AlertifyService } from '../_services/alertify.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  username = '';
 
-  constructor(private alertifyService: AlertifyService, private authService: AuthService) {}
+  constructor(
+    private alertifyService: AlertifyService,
+    public authService: AuthService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.loggedIn()) {
+      console.log(this.authService.decodedToken);
+      this.username = this.authService.decodedToken.unique_name || '';
+    }
+  }
 
   login() {
     this.authService.login(this.model).subscribe(
@@ -32,7 +41,6 @@ export class NavComponent implements OnInit {
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 }

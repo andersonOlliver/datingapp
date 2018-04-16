@@ -49,8 +49,6 @@ namespace DatingApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLoginDto)
         {
-            throw new Exception("Error on server!!!");
-            
             var userFromRepo = await _repository.Login(userForLoginDto.Username, userForLoginDto.Password);
 
             if (userFromRepo == null)
