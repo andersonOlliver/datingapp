@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BsDropdownModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -20,6 +21,7 @@ import { AlertifyService } from './_services/alertify.service';
 ],
   imports: [
     BrowserModule,
+    BsDropdownModule.forRoot(),
     FormsModule,
     HttpModule
   ],
