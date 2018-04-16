@@ -38,4 +38,7 @@ testem.log
 
 # System Files
 .DS_Store
-Thumbs.db
+*.db
+*.pd
+DatingApp.API/bin/*
+DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.dll
