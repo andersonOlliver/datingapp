@@ -10,12 +10,15 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
+<<<<<<< HEAD
 import { MemberListComponent } from './member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
+=======
+>>>>>>> 0560b06fe2cedd00c4ac2a55599e29c33d56c6ab
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { AuthGuard } from './_guards/auth.guard';
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
+<<<<<<< HEAD
     AuthGuard,
+=======
+>>>>>>> 0560b06fe2cedd00c4ac2a55599e29c33d56c6ab
     AuthService,
     AlertifyService
   ],
