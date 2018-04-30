@@ -15,7 +15,7 @@ namespace DatingApp.API.Controllers
     public class UsersController : Controller
     {
         private readonly IDatingRepository _repository;
-        
+
         private readonly IMapper _mapper;
         public UsersController(IDatingRepository repository, IMapper mapper)
         {
@@ -34,7 +34,7 @@ namespace DatingApp.API.Controllers
             return Ok(usersToReturn);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repository.GetUser(id);
@@ -48,7 +48,8 @@ namespace DatingApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserForUpdateDto userForUpdateDto)
         {
-            if(!ModelState.IsValid){
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
 
@@ -56,17 +57,20 @@ namespace DatingApp.API.Controllers
 
             var userFromRepo = await _repository.GetUser(id);
 
-            if(userFromRepo ==null){
+            if (userFromRepo == null)
+            {
                 return NotFound($"Could not find user with an ID of {id}");
             }
 
-            if(currentUserId != userFromRepo.Id){
+            if (currentUserId != userFromRepo.Id)
+            {
                 return Unauthorized();
             }
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
-            if(await _repository.SaveAll()){
+            if (await _repository.SaveAll())
+            {
                 return NoContent();
             }
 
