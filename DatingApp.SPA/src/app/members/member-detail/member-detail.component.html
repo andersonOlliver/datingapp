@@ -18,11 +18,11 @@
           </div>
           <div>
             <strong>Last Active:</strong>
-            <p>{{user.lastActive}}</p>
+            <p>{{user.lastActive| timeAgo}}</p>
           </div>
           <div>
             <strong>Member since:</strong>
-            <p>{{user.created}}</p>
+            <p>{{user.created | date: 'mediumDate'}}</p>
           </div>
         </div>
         <div class="panel-footer">
@@ -48,7 +48,7 @@
           </tab>
           <tab heading="Interests" class="custom">
             <h4>Description</h4>
-            <p>{{user.interersts}}</p>
+            <p>{{user.interests}}</p>
           </tab>
           <tab heading="Photos">
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
